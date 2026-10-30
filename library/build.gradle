@@ -1,37 +1,30 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.4.+'
-    }
-}
-apply plugin: 'android-library'
-
-dependencies {
-    compile 'com.android.support:support-v4:13.0.0'
+// Vendored from github.com/jfeinstein10/SlidingMenu @ 4254feca3ece (Apache-2.0, see LICENSE.txt)
+plugins {
+    id 'com.android.library'
 }
 
 android {
-    compileSdkVersion 17
-    buildToolsVersion "17.0.0"
+    namespace 'com.jeremyfeinstein.slidingmenu.lib'
+    compileSdk 19
 
     defaultConfig {
-        minSdkVersion 7
-        targetSdkVersion 16
+        minSdk 7
     }
 
     sourceSets {
         main {
-            java.srcDirs = ['src']
-            resources.srcDirs = ['src']
-            aidl.srcDirs = ['src']
-            renderscript.srcDirs = ['src']
-            res.srcDirs = ['res']
-            assets.srcDirs = ['assets']
-
             manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            res.srcDirs = ['res']
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'com.google.android:support-v4:r7'
 }
